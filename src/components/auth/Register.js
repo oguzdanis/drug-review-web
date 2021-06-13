@@ -10,7 +10,7 @@ const Register = () => {
                     <input type="text" placeholder="İsim" name="name" required />
                 </div>
                 <div className="form-group">
-                    <input type="email" placeholder="Email Adresi" name="email" />
+                    <input type="email" placeholder="Email" name="email" />
                 </div>
                 <div className="form-group">
                     <input
@@ -23,18 +23,13 @@ const Register = () => {
                 <div className="form-group">
                     <input
                         type="password"
-                        placeholder="Parolayı yeniden girin"
+                        placeholder="Parola(yeniden)"
                         name="password2"
                         minLength="6"
                     />
                 </div>
                 <input type="submit" class="btn btn-primary" value="Üye ol" />
             </form>
-            {/*
-            <p className="my-1">
-                Hesabınız yok mu? <a href="login.html">Üye ol</a>
-            </p>
-            */}
         </Fragment>
     )
 };
