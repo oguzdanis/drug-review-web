@@ -8,6 +8,7 @@ const Navbar = () => {
                 <a href="/"><i className="fas fa-code"></i> İlaç Yorumlama</a>
             </h1>
             <ul>
+                <li><Link to="/drugs">İlaçlar</Link></li>
                 <li><Link to="/register">Üye ol</Link></li>
                 <li><Link to="/login">Giriş Yap</Link></li>
             </ul>
