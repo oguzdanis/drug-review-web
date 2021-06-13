@@ -50,7 +50,7 @@ const Register = () => {
                         onChange={e => onChange(e)}
                     />
                 </div>
-                <input type="submit" class="btn btn-primary" value="Üye ol" />
+                <input type="submit" className="btn btn-primary" value="Üye ol" />
             </form>
         </Fragment>
     )
