@@ -1,33 +1,70 @@
 import React, { Fragment, useState } from 'react';
+import axios from 'axios';
+import { setAlert } from '../../actions/alert';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import Alert from '../layout/Alert';
 
-const Register = () => {
+const Register = ({setAlert}) => {
     const [formData, setFormData] = useState({
-        name: '',
-        email: '',
-        password: ''
+        firstName: '',
+        lastName: '',
+        userName: '',
+        password: '',
+        email: ''
+
 
     });
 
-    const {name, email, password, password2} = formData;
+    const { firstName, lastName, username, password, email } = formData;
 
     const onChange = e => setFormData({ ...formData, [e.target.name]: e.target.value });
 
-    const onSubmit = e => {
+    const onSubmit = async e => {
         e.preventDefault();
-        if(password !== password2) {
-            console.log('Password do not match');
-        } else {
-            console.log(formData);
+        setAlert('test', 'danger');
+        
+
+        const newUser = {
+            firstName,
+            lastName,
+            username,
+            password,
+            email
         }
-    }
+        try {
+            const config = {
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            }
+
+            const body = JSON.stringify(newUser);
+            console.log(body);
+            console.log(config);
+            const res = await axios.post('http://localhost:8090/api/token/register', body, config);
+            console.log(res.data);
+
+        } catch (err) {
+
+        }
+
+    };
     return (
         <Fragment>
+            <Alert />
             <h1 className="large text-primary">Üye ol</h1>
             <p className="lead">
                 <i className="fas fa-user"></i> Hesap Oluşturun</p>
             <form className="form" onSubmit={e => onSubmit(e)}>
                 <div className="form-group">
-                    <input type="text" placeholder="İsim" name="name" value={name} onChange={e => onChange(e)} required />
+                    <input type="text" placeholder="İsim" name="firstName" value={firstName} onChange={e => onChange(e)} required />
+                </div>
+                <div className="form-group">
+                    <input type="text" placeholder="Soyisim" name="lastName" value={lastName} onChange={e => onChange(e)} required />
+                </div>
+                <div className="form-group">
+                    <input type="text" placeholder="Kullaniciadi" name="username" value={username} onChange={e => onChange(e)} required/>
                 </div>
                 <div className="form-group">
                     <input type="email" placeholder="Email" name="email" value={email} onChange={e => onChange(e)} required />
@@ -39,15 +76,7 @@ const Register = () => {
                         name="password"
                         value={password}
                         onChange={e => onChange(e)}
-                    />
-                </div>
-                <div className="form-group">
-                    <input
-                        type="password"
-                        placeholder="Parola (Tekrar)"
-                        name="password2"
-                        value={password2}
-                        onChange={e => onChange(e)}
+                        required
                     />
                 </div>
                 <input type="submit" className="btn btn-primary" value="Üye ol" />
@@ -56,4 +85,8 @@ const Register = () => {
     )
 };
 
-export default Register;
+Register.prototype = {
+    setAlert: PropTypes.func.isRequired
+};
+
+export default connect(null, {setAlert})(Register);

@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { Fragment }  from 'react';
 import Drug from './Drug';
 const Drugs = () => {
     return (
-        <webview>
+        <Fragment>
             <Drug id='1' name='aspire' description='desc'></Drug>
-        </webview>
+        </Fragment>
     )
 };
 
