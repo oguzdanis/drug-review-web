@@ -12,8 +12,6 @@ const Register = ({setAlert}) => {
         userName: '',
         password: '',
         email: ''
-
-
     });
 
     const { firstName, lastName, username, password, email } = formData;
@@ -22,8 +20,6 @@ const Register = ({setAlert}) => {
 
     const onSubmit = async e => {
         e.preventDefault();
-        setAlert('test', 'danger');
-        
 
         const newUser = {
             firstName,
@@ -42,8 +38,16 @@ const Register = ({setAlert}) => {
             const body = JSON.stringify(newUser);
             console.log(body);
             console.log(config);
-            const res = await axios.post('http://localhost:8090/api/token/register', body, config);
+            const res = await axios.post('http://localhost:8090/api/token/register', body, config)
+                .then(res => {
+                    if (res.status === 200) {
+                        setAlert('Kayit başarılı', 'success');
+                    }
+                }).catch(error => {
+                    setAlert('Kayıt başarısız', 'danger');
+                });
             console.log(res.data);
+
 
         } catch (err) {
 
@@ -55,7 +59,7 @@ const Register = ({setAlert}) => {
             <Alert />
             <h1 className="large text-primary">Üye ol</h1>
             <p className="lead">
-                <i className="fas fa-user"></i> Hesap Oluşturun</p>
+                <i className="fas fa-user"/> Hesap Oluşturun</p>
             <form className="form" onSubmit={e => onSubmit(e)}>
                 <div className="form-group">
                     <input type="text" placeholder="İsim" name="firstName" value={firstName} onChange={e => onChange(e)} required />
