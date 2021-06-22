@@ -1,15 +1,19 @@
-import React, { Fragment, useState } from 'react';
+import React, {Fragment, useState} from 'react';
 import axios from 'axios';
+import {setAlert} from "../../actions/alert";
+import PropTypes from "prop-types";
+import {connect} from 'react-redux';
+import Alert from '../layout/Alert';
 
-const Login = () => {
+const Login = ({setAlert}) => {
     const [formData, setFormData] = useState({
         userName: '',
         password: ''
     });
 
-    const { username, password } = formData;
+    const {username, password} = formData;
 
-    const onChange = e => setFormData({ ...formData, [e.target.name]: e.target.value });
+    const onChange = e => setFormData({...formData, [e.target.name]: e.target.value});
 
     const onSubmit = async e => {
         e.preventDefault();
@@ -26,10 +30,15 @@ const Login = () => {
             }
 
             const body = JSON.stringify(newUser);
-            console.log(body);
-            console.log(config);
-            const res = await axios.post('http://localhost:8090/api/token', body, config);
-            console.log(res.data);
+            await axios.post('http://localhost:8090/api/token', body, config)
+                .then(res => {
+                    if (res.status === 200) {
+                        setAlert('Giriş Başarılı', 'success');
+                    }
+                }).catch(error => {
+                    setAlert('Giriş başarısız', 'danger');
+                });
+
 
         } catch (err) {
 
@@ -38,6 +47,7 @@ const Login = () => {
     };
     return (
         <Fragment>
+            <Alert/>
             <h1 className="large text-primary">Giriş Yap</h1>
             <form className="form" onSubmit={e => onSubmit(e)}>
                 <div className="form-group">
@@ -53,10 +63,14 @@ const Login = () => {
                         required
                     />
                 </div>
-                <input type="submit" className="btn btn-primary" value="Giriş Yap" />
+                <input type="submit" className="btn btn-primary" value="Giriş Yap"/>
             </form>
         </Fragment>
     )
 };
 
-export default Login;
+Login.prototype = {
+    setAlert: PropTypes.func.isRequired
+}
+
+export default connect(null, {setAlert})(Login);

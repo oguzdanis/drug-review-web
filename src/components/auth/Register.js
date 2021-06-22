@@ -1,7 +1,7 @@
-import React, { Fragment, useState } from 'react';
+import React, {Fragment, useState} from 'react';
 import axios from 'axios';
-import { setAlert } from '../../actions/alert';
-import { connect } from 'react-redux';
+import {setAlert} from '../../actions/alert';
+import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 import Alert from '../layout/Alert';
 
@@ -36,9 +36,7 @@ const Register = ({setAlert}) => {
             }
 
             const body = JSON.stringify(newUser);
-            console.log(body);
-            console.log(config);
-            const res = await axios.post('http://localhost:8090/api/token/register', body, config)
+            await axios.post('http://localhost:8090/api/token/register', body, config)
                 .then(res => {
                     if (res.status === 200) {
                         setAlert('Kayit başarılı', 'success');
@@ -46,8 +44,6 @@ const Register = ({setAlert}) => {
                 }).catch(error => {
                     setAlert('Kayıt başarısız', 'danger');
                 });
-            console.log(res.data);
-
 
         } catch (err) {
 
