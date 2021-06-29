@@ -1,63 +1,42 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { List } from 'antd';
 import 'antd/dist/antd.css';
-const Drugs = () => {
+import axios from 'axios';
 
-    const drugs = [{
-        id: '1',
-        name: 'Aspirin',
-        description: '- İltihabi durumlarda: örn. akut ve kronik romatizmal hastalıklarda- Ağrılarda; örn. baş ve diş ağrısı, bel ağrısı (lumbago), nevralji, siyatik, migren- Soğuk algınlığı, grip ve hafif enfeksiyonlarda görülen ağrı ve ateşdurumlarında',
+class Drugs extends Component {
 
-    },
-    {
-        id: '1',
-        name: 'Aspirin',
-        description: '- İltihabi durumlarda: örn. akut ve kronik romatizmal hastalıklarda- Ağrılarda; örn. baş ve diş ağrısı, bel ağrısı (lumbago), nevralji, siyatik, migren- Soğuk algınlığı, grip ve hafif enfeksiyonlarda görülen ağrı ve ateşdurumlarında',
+    state = {
+        drugs: []
+    };
 
-    },
-    {
-        id: '1',
-        name: 'Aspirin',
-        description: '- İltihabi durumlarda: örn. akut ve kronik romatizmal hastalıklarda- Ağrılarda; örn. baş ve diş ağrısı, bel ağrısı (lumbago), nevralji, siyatik, migren- Soğuk algınlığı, grip ve hafif enfeksiyonlarda görülen ağrı ve ateşdurumlarında',
+    async componentDidMount() {
 
-    },
-    {
-        id: '1',
-        name: 'Aspirin',
-        description: '- İltihabi durumlarda: örn. akut ve kronik romatizmal hastalıklarda- Ağrılarda; örn. baş ve diş ağrısı, bel ağrısı (lumbago), nevralji, siyatik, migren- Soğuk algınlığı, grip ve hafif enfeksiyonlarda görülen ağrı ve ateşdurumlarında',
-
-    },
-    {
-        id: '1',
-        name: 'Aspirin',
-        description: '- İltihabi durumlarda: örn. akut ve kronik romatizmal hastalıklarda- Ağrılarda; örn. baş ve diş ağrısı, bel ağrısı (lumbago), nevralji, siyatik, migren- Soğuk algınlığı, grip ve hafif enfeksiyonlarda görülen ağrı ve ateşdurumlarında',
-
-    },
-    {
-        id: '1',
-        name: 'Aspirin',
-        description: '- İltihabi durumlarda: örn. akut ve kronik romatizmal hastalıklarda- Ağrılarda; örn. baş ve diş ağrısı, bel ağrısı (lumbago), nevralji, siyatik, migren- Soğuk algınlığı, grip ve hafif enfeksiyonlarda görülen ağrı ve ateşdurumlarında',
-
-    },
-    {
-        id: '1',
-        name: 'Aspirin',
-        description: '- İltihabi durumlarda: örn. akut ve kronik romatizmal hastalıklarda- Ağrılarda; örn. baş ve diş ağrısı, bel ağrısı (lumbago), nevralji, siyatik, migren- Soğuk algınlığı, grip ve hafif enfeksiyonlarda görülen ağrı ve ateşdurumlarında',
-
-    }];
-    return (
-        <List
-            itemLayout="horizontal"
-            dataSource={drugs}
-            renderItem={item => (
-                <List.Item>
-                    <List.Item.Meta
-                        title={item.name}
-                        description={item.description} />
-                </List.Item>
-            )}>
-        </List>
-    )
-};
+            const config = {
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            }
+            axios.get('http://localhost:8090/api/v1/products', config)
+                .then(res => {
+                    console.log(res)
+                    this.setState({ drugs: res.data })
+                });    
+    }
+    render() {
+        return (
+            <List
+                itemLayout="horizontal"
+                dataSource={this.state.drugs}
+                renderItem={item => (
+                    <List.Item>
+                        <List.Item.Meta
+                            title={item.name}
+                            description={item.description} />
+                    </List.Item>
+                )}>
+            </List>
+        )
+    };
+}
 
 export default Drugs;

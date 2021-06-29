@@ -6,7 +6,7 @@ const Landing = () => {
                     <p className="x-large">İlaçlar hakkında bilgilenmeye hazır mısınız</p>
                     <p className="lead">
                         Merak ettiğiniz tüm ilaçlarla ilgili uzman ve kullanıcı yorumları burada.
-                        Şimdi Üye ol.
+                        Şimdi <a href="register">Üye ol</a>.
                     </p>
                     <div className="buttons">
                         <a href="register" class="btn btn-primary">Üye ol</a>
