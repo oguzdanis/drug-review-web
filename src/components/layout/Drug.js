@@ -1,14 +1,13 @@
-import React, { Fragment }  from 'react';
+import React, { Fragment } from 'react';
+import './Drug.css';
 
 const Drug = (props) => {
     return (
         <Fragment>
-            <div>{props.id}</div>
-            <div>{props.name}</div>
-            <div>{props.description}</div>
-            <div>{props.formul}</div>
-            <div>{props.kullanimSekli}</div>
-            <div>{props.url}</div>
+            <div className='expenses' >
+                <div className='post-first-child'>{props.name}</div>
+                <div>{props.description}</div>
+           </div>
         </Fragment>
     )
 };

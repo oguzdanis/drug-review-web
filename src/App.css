@@ -499,7 +499,8 @@ button {
 
   /* Text Styles */
   .x-large {
-    font-size: 3rem;
+    font-size: 1rem;
+    color: rgb(180, 100, 42);
   }
 
   .large {
@@ -523,6 +524,10 @@ button {
 
   .navbar h1 {
     margin-bottom: 1rem;
+  }
+
+  h1 {
+    color: green;
   }
 
   .navbar .welcome {

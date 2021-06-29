@@ -1,0 +1,10 @@
+.post-first-child {
+    text-align: center;
+    margin-bottom: 3%;
+  }
+
+.expenses {
+    padding: 1rem;
+    background: rgba(112, 110, 110, 0.479);
+    width: 100%;
+    }
