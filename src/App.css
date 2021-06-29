@@ -58,8 +58,11 @@ img {
 }
 
 .lead {
-  font-size: 1.5rem;
-  margin-bottom: 1rem;
+  font-size: 1.25rem;
+}
+
+.logo {
+  font-size: 1.45rem;
 }
 
 .text-center {
@@ -309,7 +312,7 @@ button {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0.7rem 2rem;
+  padding: 0.2rem 2rem;
   position: fixed;
   z-index: 1;
   width: 100%;
@@ -320,6 +323,7 @@ button {
 
 .navbar ul {
   display: flex;
+  margin-top: 10px;
 }
 
 .navbar a {
@@ -508,7 +512,7 @@ button {
   }
 
   .lead {
-    font-size: 1rem;
+    font-size: 0.8rem;
   }
 
   /* Navbar */
