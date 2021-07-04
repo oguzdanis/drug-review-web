@@ -12,16 +12,19 @@ import store from './store';
 const App = () => (
   <Provider store={store}>
     <Router>
-      <Fragment>
+      <Fragment >
         <Navbar />
         <Route exact path='/' component={Landing} />
-        <section className='container'>
-          <Switch>
-            <Route exact path='/drugs' component={Drugs} />
-            <Route exact path='/register' component={Register} />
-            <Route exact path='/login' component={Login} />
-          </Switch>
-        </section>
+        <div className='main'>
+          <section className='container'>
+            <Switch>
+              <Route exact path='/drugs' component={Drugs} />
+              <Route exact path='/register' component={Register} />
+              <Route exact path='/login' component={Login} />
+            </Switch>
+          </section>
+        </div>
+
       </Fragment>
     </Router >
   </Provider>

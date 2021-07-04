@@ -30,18 +30,22 @@ ul {
   list-style: none;
 }
 
-img {
-  width: 100%;
+.ant-list-item:hover {
+  box-shadow: 0 0 4px rgb(0, 0, 0);
+}
+
+.ant-list-item-meta-description{
+  color: rgba(0, 0, 0, 0.7);
+  font-size: 27px;
 }
 
 /* Utilities */
 .container {
-  max-width: 1100px;
-  margin: auto;
-  overflow: hidden;
-  padding: 0 2rem;
-  margin-top: 6rem;
-  margin-bottom: 3rem;
+  margin-top: 8rem;
+}
+
+.main{
+  background-color: #f8f8f8;
 }
 
 /* Text Styles*/
