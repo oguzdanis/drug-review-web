@@ -27,6 +27,7 @@ class Drugs extends Component {
     }
     render() {
         return (
+            <div className='item-height'>
                 <List
                     itemLayout="vertical"
                     size="small"
@@ -41,18 +42,19 @@ class Drugs extends Component {
                             ]}
                             extra={
                                 <img
-                                  width={220}
-                                  alt="logo"
-                                  src="https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png"
+                                    width={220}
+                                    alt="logo"
+                                    src="https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png"
                                 />
-                              }
-                            >
+                            }
+                        >
                             <List.Item.Meta
                                 title={item.name}
-                                description={item.description} style={{color: "black"}} />
+                                description={item.description} style={{ color: "black" }} />
                         </List.Item>
                     )}>
                 </List>
+            </div>
         )
     };
 }

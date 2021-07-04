@@ -34,6 +34,10 @@ ul {
   box-shadow: 0 0 4px rgb(0, 0, 0);
 }
 
+.ant-list-items {
+  height: 80px;
+}
+
 .ant-list-item-meta-description{
   color: rgba(0, 0, 0, 0.7);
   font-size: 27px;
@@ -144,6 +148,10 @@ ul {
   margin-right: 0.5rem;
   transition: opacity 0.2s ease-in;
   outline: none;
+}
+
+.item-height {
+  height: 70px;
 }
 
 .badge {
